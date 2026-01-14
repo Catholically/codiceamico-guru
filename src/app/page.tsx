@@ -8,7 +8,7 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <section className="px-6 md:px-12 py-16 md:py-24 max-w-5xl">
-        {/* Badge Aggiornamento - PIU' VISIBILE */}
+        {/* Badge Aggiornamento */}
         <div className="inline-flex items-center gap-3 bg-[#FAFF00] text-[#111] px-5 py-3 mb-8 font-bold text-sm tracking-wide">
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#111] opacity-75"></span>
@@ -69,15 +69,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Section */}
+      {/* Categories Section - NUOVO STILE MODERNO */}
       <section className="py-16 px-6 md:px-12" id="categorie">
         <div className="section-title">Esplora per Categoria</div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl">
-          {categories.map((category) => (
-            <a key={category.id} href={`/categoria/${category.slug}/`} className="category-card block">
-              <span className="cat-icon text-4xl block mb-4 transition-transform">{category.icon}</span>
-              <h3 className="text-lg font-bold mb-2">{category.name}</h3>
-              <p className="cat-desc text-sm text-[#666]">{category.description}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 max-w-6xl border border-white/20">
+          {categories.map((category, index) => (
+            <a 
+              key={category.id} 
+              href={`/categoria/${category.slug}/`} 
+              className="group relative p-8 border-b border-r border-white/20 hover:bg-[#FAFF00] transition-all duration-300"
+            >
+              {/* Numero in background */}
+              <span className="absolute top-4 right-4 text-6xl font-black text-white/5 group-hover:text-[#111]/10 transition-colors">
+                0{index + 1}
+              </span>
+              
+              {/* Icon grande */}
+              <span className="text-5xl block mb-6 group-hover:scale-110 transition-transform duration-300">
+                {category.icon}
+              </span>
+              
+              {/* Nome categoria */}
+              <h3 className="text-xl font-black tracking-tight mb-2 group-hover:text-[#111]">
+                {category.name.toUpperCase()}
+              </h3>
+              
+              {/* Arrow che appare on hover */}
+              <span className="inline-block mt-4 text-[#FAFF00] group-hover:text-[#111] font-bold opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">
+                ESPLORA →
+              </span>
             </a>
           ))}
         </div>
