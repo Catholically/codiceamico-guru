@@ -2,81 +2,293 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 :root {
-  --color-guru: #22c55e;
+  --black: #111111;
+  --white: #FAFAFA;
+  --gray-100: #F3F3F3;
+  --gray-400: #999999;
+  --gray-600: #666666;
+  --yellow: #FAFF00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  background-color: #fafaf9;
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.5;
 }
 
-.guru-gradient {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+/* Utility Classes */
+.text-yellow {
+  color: var(--yellow);
 }
 
-.guru-text-gradient {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.bg-yellow {
+  background: var(--yellow);
 }
 
-.btn-primary {
-  @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white rounded-xl;
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  box-shadow: 0 4px 14px 0 rgba(34, 197, 94, 0.39);
+.text-gray-400 {
+  color: var(--gray-400);
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px 0 rgba(34, 197, 94, 0.5);
+.text-gray-600 {
+  color: var(--gray-600);
 }
 
-.card-hover {
+/* Hero Section */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 2rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gray-400);
+}
+
+/* CTA Button */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 2.5rem;
+  background: var(--yellow);
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.cta-btn:hover {
+  transform: translateX(8px);
+}
+
+.cta-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--gray-600);
+  transition: all 0.2s ease;
+}
+
+.cta-btn-outline:hover {
+  border-color: var(--white);
+}
+
+/* Stats */
+.stats-row {
+  display: flex;
+  gap: 4rem;
+  padding: 3rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.stat-num {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
+
+/* Cards */
+.card {
+  padding: 2rem;
+  background: var(--gray-100);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: var(--black);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--yellow);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.card:hover::after {
+  transform: translateY(0);
+}
+
+.card-cat {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-600);
+  margin-bottom: 1rem;
+}
+
+.card:hover .card-cat {
+  color: var(--yellow);
+}
+
+.card h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.bonus-label {
+  color: var(--gray-600);
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.card:hover .bonus-label {
+  color: var(--gray-400);
+}
+
+.bonus-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.card:hover .bonus-value {
+  color: var(--yellow);
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.card:hover p {
+  color: var(--gray-400);
+}
+
+/* Category Card */
+.category-card {
+  padding: 2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
   transition: all 0.3s ease;
 }
 
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
-}
-
-.category-card {
-  @apply relative overflow-hidden rounded-2xl p-6 bg-white border border-stone-200;
-}
-
 .category-card:hover {
-  border-color: #22c55e;
+  background: var(--yellow);
+  color: var(--black);
+  border-color: var(--yellow);
 }
 
-.badge-green {
-  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
-  background: #dcfce7;
-  color: #166534;
+.category-card:hover .cat-icon {
+  transform: scale(1.1);
 }
 
-.badge-blue {
-  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
-  background: #dbeafe;
-  color: #1e40af;
+.category-card:hover .cat-desc {
+  color: var(--black);
+  opacity: 0.7;
 }
 
-.badge-yellow {
-  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
-  background: #fef3c7;
-  color: #92400e;
+/* Section Title */
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gray-400);
+  margin-bottom: 3rem;
 }
 
+/* Code Box */
 .code-box {
   font-family: monospace;
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-  border: 2px dashed #22c55e;
-  padding: 1rem 1.5rem;
-  border-radius: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #166534;
+  background: var(--yellow);
+  color: var(--black);
+  padding: 1.5rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
   text-align: center;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.code-box:hover {
+  transform: scale(1.02);
+}
+
+/* Light Section */
+.light-section {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
+
+.breadcrumb a {
+  color: var(--gray-400);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--white);
+}
+
+/* How To Steps */
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--yellow);
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 3rem 0;
+  color: var(--gray-400);
+  font-size: 0.85rem;
 }
