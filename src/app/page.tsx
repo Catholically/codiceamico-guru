@@ -1,4 +1,46 @@
-import { categories, getFeaturedCodes, getAllActiveCodes } from '@/data/codes';
+import { categories, getFeaturedCodes, getAllActiveCodes, CategoryType } from '@/data/codes';
+
+// Icone SVG minimal outline per ogni categoria
+const categoryIcons: Record<CategoryType, JSX.Element> = {
+  banche: (
+    <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+    </svg>
+  ),
+  finanza: (
+    <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M3 17l6-6 4 4 8-8M14 7h7v7"/>
+    </svg>
+  ),
+  energia: (
+    <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+    </svg>
+  ),
+  telefonia: (
+    <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="5" y="2" width="14" height="20" rx="2"/>
+      <line x1="12" y1="18" x2="12" y2="18.01"/>
+    </svg>
+  ),
+  delivery: (
+    <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+    </svg>
+  ),
+  assicurazioni: (
+    <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+  ),
+  altro: (
+    <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="3" y="8" width="18" height="14" rx="2"/>
+      <path d="M16 8V6a4 4 0 00-8 0v2M12 14v2"/>
+    </svg>
+  ),
+};
 
 export default function HomePage() {
   const featuredCodes = getFeaturedCodes();
@@ -69,7 +111,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Section - NUOVO STILE MODERNO */}
+      {/* Categories Section - SVG ICONS */}
       <section className="py-16 px-6 md:px-12" id="categorie">
         <div className="section-title">Esplora per Categoria</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 max-w-6xl border border-white/20">
@@ -84,10 +126,10 @@ export default function HomePage() {
                 0{index + 1}
               </span>
               
-              {/* Icon grande */}
-              <span className="text-5xl block mb-6 group-hover:scale-110 transition-transform duration-300">
-                {category.icon}
-              </span>
+              {/* SVG Icon */}
+              <div className="mb-6 text-white/70 group-hover:text-[#111] group-hover:scale-110 transition-all duration-300">
+                {categoryIcons[category.id]}
+              </div>
               
               {/* Nome categoria */}
               <h3 className="text-xl font-black tracking-tight mb-2 group-hover:text-[#111]">
