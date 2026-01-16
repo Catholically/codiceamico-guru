@@ -210,7 +210,7 @@ export const referralCodes: ReferralCode[] = [
       'Ricevi il buono Amazon via email',
     ],
     terms: 'Buono Amazon inviato via email dopo l\'attivazione del conto.',
-    active: true,
+    active: false,
   },
   {
     id: 'bpm',
@@ -484,19 +484,20 @@ export const referralCodes: ReferralCode[] = [
     name: 'Glovo',
     slug: 'codice-amico-glovo',
     category: 'delivery',
-    code: 'DA_INSERIRE',
+    code: 'D26WDLQ',
     link: 'https://glovoapp.com/',
-    bonusInviter: '5€',
-    bonusInvited: '5€',
-    description: 'Glovo consegna di tutto: cibo, farmacia, supermercato e altro ancora.',
+    bonusInviter: '3 consegne gratis',
+    bonusInvited: '3 consegne gratis',
+    description: 'Glovo consegna di tutto: cibo, farmacia, supermercato e altro ancora. Ricevi 3 consegne gratuite per ogni amico che inviti!',
     howTo: [
-      'Scarica l\'app Glovo',
-      'Inserisci il codice amico',
-      'Fai il primo ordine',
-      'Entrambi ricevete 5€',
+      'Condividi il codice D26WDLQ con un amico',
+      'Il tuo amico si registra e usa il codice',
+      'Lui riceve 3 consegne gratuite sui primi ordini (min 5€)',
+      'Tu ricevi 3 consegne gratuite quando lui ordina',
     ],
-    terms: 'Sconto applicato al primo ordine. Verificare importo attuale.',
+    terms: 'Consegna gratuita su ordini superiori a 5€. Il codice e valido 30 giorni dalla condivisione.',
     active: true,
+    featured: true,
   },
   {
     id: 'too-good-to-go',
@@ -533,9 +534,8 @@ export const referralCodes: ReferralCode[] = [
       'Ricevi 10€ di sconto',
     ],
     terms: 'Sconto sulla prima spesa online. Solo zone coperte dal servizio.',
-    active: true,
+    active: false,
   },
-
   // ============================================
   // 🛡️ ASSICURAZIONI
   // ============================================
