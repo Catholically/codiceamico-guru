@@ -225,7 +225,7 @@ export default function CodePage({ params }: Props) {
               </div>
               <a
                 href={category ? `/categoria/${category.slug}/` : '/'}
-                className="block text-center text-[#FAFF00] hover:underline font-bold text-sm"
+                className="block text-center text-[#111] hover:underline font-bold text-sm"
               >
                 ← Altri codici {category?.name}
               </a>

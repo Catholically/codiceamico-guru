@@ -13,7 +13,15 @@
       "Bash(curl:*)",
       "Bash(vercel project:*)",
       "Bash(dir /s /b C:AI_Projects*codice*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(gh repo view:*)",
+      "Bash(git remote add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(vercel domains ls:*)",
+      "Bash(vercel inspect:*)",
+      "Bash(vercel domains:*)",
+      "Bash(vercel alias set:*)"
     ]
   }
 }
