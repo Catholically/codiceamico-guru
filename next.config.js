@@ -1,0 +1,38 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Enable static export for maximum SEO performance
+  output: 'export',
+  
+  // Trailing slashes for consistent URLs
+  trailingSlash: true,
+  
+  // Image optimization
+  images: {
+    unoptimized: true,
+  },
+  
+  // Headers for SEO
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+        ],
+      },
+    ]
+  },
+}
+
+module.exports = nextConfig

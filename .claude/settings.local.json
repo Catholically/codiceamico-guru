@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(npx next build)",
+      "Bash(npm install:*)",
+      "Bash(vercel --prod --yes:*)",
+      "Bash(git init:*)",
+      "Bash(vercel ls:*)",
+      "Bash(vercel list:*)",
+      "Bash(vercel rollback:*)",
+      "Bash(vercel pull:*)",
+      "Bash(curl:*)",
+      "Bash(vercel project:*)",
+      "Bash(dir /s /b C:AI_Projects*codice*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
