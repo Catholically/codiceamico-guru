@@ -1,17 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable static export for maximum SEO performance
-  output: 'export',
-  
   // Trailing slashes for consistent URLs
   trailingSlash: true,
-  
-  // Image optimization
+
+  // Image optimization (keep unoptimized for simplicity)
   images: {
     unoptimized: true,
   },
-  
-  // Headers for SEO
+
+  // Headers for SEO and security
   async headers() {
     return [
       {

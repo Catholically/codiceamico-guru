@@ -24,6 +24,7 @@ export interface ReferralCode {
   logo?: string;
   featured?: boolean;
   active: boolean;
+  contactNote?: string; // Nota per codici che richiedono info aggiuntive (es. verifica identità)
 }
 
 export type CategoryType = 
@@ -409,18 +410,19 @@ export const referralCodes: ReferralCode[] = [
     name: 'Unidata',
     slug: 'codice-amico-unidata',
     category: 'telefonia',
-    code: 'CONTATTAMI',
-    link: 'mailto:info@codiceamico.guru?subject=Richiesta%20codice%20Unidata',
+    code: 'ROBERTAPARMA',
+    link: 'https://www.unidata.it/gigafiber/',
     bonusInviter: '1 mese gratis',
     bonusInvited: '1 mese gratis',
     description: 'Unidata e un operatore di fibra ottica con offerte da 19,90€/mese. Fibra fino a 10 Gbit/s senza vincoli. Programma referral con mese gratuito per entrambi!',
     howTo: [
-      'Clicca sul pulsante per contattarmi',
-      'Ti inviero il mio codice cliente per il referral',
-      'Attiva il servizio Unidata (Gigafiber 1000, 2500 o 10000) indicando il codice',
-      'Entrambi riceviamo 1 mese gratis',
+      'Vai sul sito Unidata e scegli la tua offerta Gigafiber',
+      'Durante la registrazione, inserisci il codice ROBERTAPARMA',
+      'Completa l\'attivazione della fibra',
+      'Entrambi riceviamo 1 mese gratis!',
     ],
     terms: 'Referral tramite codice cliente. Offerte: 1000 Mega 19,90€/mese, 2500 Mega 24,90€/mese, 10 Giga 34,90€/mese. Nessun vincolo.',
+    contactNote: 'Unidata potrebbe richiedere verifiche aggiuntive sul codice referral. Se hai bisogno di maggiori informazioni o assistenza, contattami!',
     active: true,
   },
   {
@@ -531,19 +533,20 @@ export const referralCodes: ReferralCode[] = [
     name: 'Too Good To Go',
     slug: 'codice-amico-too-good-to-go',
     category: 'delivery',
-    code: 'DA_INSERIRE',
-    link: 'https://toogoodtogo.it/',
-    bonusInviter: 'Fino a 12,50€',
-    bonusInvited: 'Credito',
-    description: 'Too Good To Go salva il cibo invenduto. Magic Box a prezzi scontatissimi!',
+    code: 'USA IL LINK',
+    link: 'https://share.toogoodtogo.com/c2c/referral-code/always-on-person-a-incentivized/RVUxLTE3NTE3NzQz',
+    bonusInviter: '2,50€ per amico',
+    bonusInvited: '2,50€ di credito',
+    description: 'Too Good To Go e l\'app anti-spreco numero 1! Salva Magic Box di cibo invenduto da ristoranti, bar, supermercati e pasticcerie a prezzi super scontati (di solito 1/3 del valore).',
     howTo: [
-      'Scarica l\'app Too Good To Go',
-      'Registrati con il link di invito',
+      'Clicca sul link qui sotto per scaricare l\'app',
+      'Registrati (il link traccia automaticamente il referral)',
       'Acquista la tua prima Magic Box',
-      'Ricevi il credito bonus',
+      'Ricevi 2,50€ di credito per il prossimo acquisto!',
     ],
-    terms: 'Credito utilizzabile per Magic Box. Anti-spreco alimentare!',
+    terms: 'Il credito di 2,50€ viene accreditato dopo il primo acquisto. Utilizzabile su qualsiasi Magic Box. Aiuti anche l\'ambiente riducendo lo spreco alimentare!',
     active: true,
+    featured: true,
   },
   {
     id: 'esselunga',

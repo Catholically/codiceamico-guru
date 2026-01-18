@@ -21,6 +21,7 @@ const promoNames: Record<string, string> = {
   'amex-business-platinum': 'Presenta un Amico Business Amex',
   'unidata': 'Porta i Tuoi Amici Unidata',
   'trade-republic': 'Invita Amici Trade Republic',
+  'too-good-to-go': 'Invita un Amico Too Good To Go',
 };
 
 function getPromoName(code: ReferralCode): string {
@@ -275,6 +276,25 @@ export default function CodePage({ params }: Props) {
                 </div>
               )}
             </div>
+
+            {/* Contact Note - per codici che richiedono info aggiuntive */}
+            {code.contactNote && (
+              <div className="bg-blue-50 border border-blue-200 p-6">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl">💬</span>
+                  <div>
+                    <h3 className="font-bold text-[#111] mb-2">Hai bisogno di assistenza?</h3>
+                    <p className="text-[#666] text-sm mb-3">{code.contactNote}</p>
+                    <a
+                      href={`/contatti/?codice=${code.id}`}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-800"
+                    >
+                      Contattami →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* How To */}
             <div className="bg-white p-6 border border-[#e5e5e5]">
