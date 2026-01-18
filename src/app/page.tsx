@@ -4,6 +4,35 @@ export default function HomePage() {
   const featuredCodes = getFeaturedCodes();
   const allCodes = getAllActiveCodes();
 
+  // Schema.org WebSite per homepage
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'CodiceAmico.guru',
+    url: 'https://codiceamico.guru/',
+    description: 'I migliori codici amico e referral in Italia per banche, energia, telefonia e delivery. Risparmia fino a 200€.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://codiceamico.guru/?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  // Schema.org ItemList per codici in evidenza
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Codici Amico in Evidenza',
+    description: 'I migliori codici referral selezionati per te',
+    numberOfItems: featuredCodes.length,
+    itemListElement: featuredCodes.map((code, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: code.name,
+      url: `https://codiceamico.guru/${code.slug}/`,
+    })),
+  };
+
   const categoryIcons: Record<string, JSX.Element> = {
     banche: (
       <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -58,6 +87,9 @@ export default function HomePage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+
       {/* Hero Section */}
       <section className="px-6 md:px-12 py-16 md:py-24 max-w-5xl">
         <div className="inline-flex items-center gap-3 bg-[#FAFF00] text-[#111] px-5 py-3 mb-8 font-bold text-sm tracking-wide">
