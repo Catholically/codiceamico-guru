@@ -3,29 +3,57 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://codiceamico.guru';
-  
+  const today = new Date();
+
   // Homepage
   const routes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: today,
       changeFrequency: 'daily',
       priority: 1,
     },
-  ];
-
-  // Blog/Guide articles
-  const blogArticles = [
+    // Confronto page (high value for SEO)
     {
-      slug: 'codice-amico-ing-conto-arancio-4-percento',
-      lastModified: new Date('2025-01-15'),
+      url: `${baseUrl}/confronto`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
+    // Guide page
+    {
+      url: `${baseUrl}/guide`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    // Glossario page
+    {
+      url: `${baseUrl}/glossario`,
+      lastModified: today,
+      changeFrequency: 'monthly',
+      priority: 0.75,
     },
   ];
 
-  blogArticles.forEach((article) => {
+  // SEO landing pages
+  const seoPages = [
+    { slug: 'codice-amico-ing-conto-arancio-4-percento', lastModified: new Date('2026-01-15') },
+    { slug: 'bbva-passaparola', lastModified: new Date('2026-01-15') },
+    { slug: 'n26-invita-i-tuoi-amici', lastModified: new Date('2026-01-15') },
+    { slug: 'revolut-invita-un-amico', lastModified: new Date('2026-01-15') },
+    { slug: 'satispay-invita-un-amico', lastModified: new Date('2026-01-15') },
+    { slug: 'octopus-energy-octofriends', lastModified: new Date('2026-01-15') },
+    { slug: 'wise-invita-amici', lastModified: new Date('2026-01-15') },
+    { slug: 'glovo-invita-un-amico', lastModified: new Date('2026-01-15') },
+    { slug: 'genertel-piu-buoni-insieme', lastModified: new Date('2026-01-15') },
+    { slug: 'amex-business-platinum-referral', lastModified: new Date('2026-01-15') },
+  ];
+
+  seoPages.forEach((page) => {
     routes.push({
-      url: `${baseUrl}/${article.slug}`,
-      lastModified: article.lastModified,
+      url: `${baseUrl}/${page.slug}`,
+      lastModified: page.lastModified,
       changeFrequency: 'monthly',
       priority: 0.85,
     });

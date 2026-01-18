@@ -111,11 +111,11 @@ export default function HomePage() {
                 <div className="flex gap-8 mb-4">
                   <div>
                     <span className="bonus-label">Tu ricevi</span>
-                    <span className="bonus-value">{code.bonusInviter}</span>
+                    <span className="bonus-value">{code.bonusInvited}</span>
                   </div>
                   <div>
-                    <span className="bonus-label">Amico</span>
-                    <span className="bonus-value">{code.bonusInvited}</span>
+                    <span className="bonus-label">Presentatore</span>
+                    <span className="bonus-value">{code.bonusInviter}</span>
                   </div>
                 </div>
                 <p>{code.description.slice(0, 60)}...</p>
@@ -164,7 +164,7 @@ export default function HomePage() {
             >
               <h3 className="font-bold mb-1">{code.name}</h3>
               <div className="text-sm text-[#999] group-hover:text-[#111]/70">
-                Bonus: {code.bonusInviter}
+                Bonus: {code.bonusInvited}
               </div>
             </a>
           ))}

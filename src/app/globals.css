@@ -24,6 +24,15 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Hide scrollbar for mobile nav */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer components {
@@ -101,13 +110,13 @@
   /* Code Detail Page */
   .code-box {
     @apply font-mono text-2xl md:text-3xl font-bold text-center py-6 px-8 border-2 border-dashed cursor-pointer transition-all;
-    border-color: var(--color-accent);
-    background: rgba(250, 255, 0, 0.1);
-    color: var(--color-accent);
+    border-color: #111;
+    background: #111;
+    color: #FAFF00;
   }
 
   .code-box:hover {
-    background: rgba(250, 255, 0, 0.2);
+    background: #222;
   }
 
   /* Breadcrumb */

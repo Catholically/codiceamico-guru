@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+
+  <!-- Title -->
+  <text x="60" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="900" fill="#FFFFFF">
+    CODICEAMICO<tspan fill="#FAFF00">.GURU</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="60" y="340" font-family="system-ui, sans-serif" font-size="32" fill="#999999">
+    I Migliori Codici Referral Italia 2026
+  </text>
+
+  <!-- Badges -->
+  <rect x="60" y="400" width="120" height="50" fill="#FAFF00"/>
+  <text x="120" y="433" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0A0A0A" text-anchor="middle">N26</text>
+
+  <rect x="200" y="400" width="120" height="50" fill="#FAFF00"/>
+  <text x="260" y="433" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0A0A0A" text-anchor="middle">Revolut</text>
+
+  <rect x="340" y="400" width="120" height="50" fill="#FAFF00"/>
+  <text x="400" y="433" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0A0A0A" text-anchor="middle">BBVA</text>
+
+  <rect x="480" y="400" width="120" height="50" fill="#FAFF00"/>
+  <text x="540" y="433" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0A0A0A" text-anchor="middle">ING</text>
+
+  <rect x="620" y="400" width="120" height="50" fill="#FAFF00"/>
+  <text x="680" y="433" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0A0A0A" text-anchor="middle">Satispay</text>
+
+  <!-- Footer -->
+  <text x="60" y="580" font-family="system-ui, sans-serif" font-size="20" fill="#666666">
+    Risparmia fino a 500 euro con i codici amico
+  </text>
+</svg>

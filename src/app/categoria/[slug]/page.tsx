@@ -69,11 +69,11 @@ export default function CategoryPage({ params }: Props) {
               <div className="flex gap-8 mb-4">
                 <div>
                   <span className="bonus-label">Tu ricevi</span>
-                  <span className="bonus-value">{code.bonusInviter}</span>
+                  <span className="bonus-value">{code.bonusInvited}</span>
                 </div>
                 <div>
-                  <span className="bonus-label">Amico</span>
-                  <span className="bonus-value">{code.bonusInvited}</span>
+                  <span className="bonus-label">Presentatore</span>
+                  <span className="bonus-value">{code.bonusInviter}</span>
                 </div>
               </div>
               <p>{code.description.slice(0, 100)}...</p>
