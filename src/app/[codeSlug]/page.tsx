@@ -71,7 +71,7 @@ export default function CodePage({ params }: Props) {
   const currentYear = new Date().getFullYear();
   const promoName = getPromoName(code);
 
-  // Schema.org Offer with AggregateRating
+  // Schema.org Product con Offer e AggregateRating
   // Rating basato su: featured (4.8-5.0), active (4.5-4.8), con scadenza vicina (4.2-4.5)
   const baseRating = code.featured ? 4.8 : 4.5;
   const ratingValue = code.expiresAt && new Date(code.expiresAt) < new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
@@ -81,16 +81,20 @@ export default function CodePage({ params }: Props) {
 
   const schemaData = {
     '@context': 'https://schema.org',
-    '@type': 'Offer',
+    '@type': 'Product',
     name: promoName,
     description: code.description,
     url: `https://codiceamico.guru/${code.slug}/`,
-    availability: 'https://schema.org/InStock',
-    priceCurrency: 'EUR',
-    price: '0',
-    seller: {
-      '@type': 'Organization',
+    brand: {
+      '@type': 'Brand',
       name: code.name,
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      url: `https://codiceamico.guru/${code.slug}/`,
     },
     aggregateRating: {
       '@type': 'AggregateRating',
