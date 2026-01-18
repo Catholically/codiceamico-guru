@@ -33,8 +33,46 @@ export default function CategoryPage({ params }: Props) {
 
   const codes = getCodesByCategory(category.id);
 
+  // Schema.org ItemList per pagine categoria
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Codici Amico ${category.name}`,
+    description: category.description,
+    numberOfItems: codes.length,
+    itemListElement: codes.map((code, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: code.name,
+      url: `https://codiceamico.guru/${code.slug}/`,
+    })),
+  };
+
+  // Schema.org BreadcrumbList
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://codiceamico.guru/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: category.name,
+        item: `https://codiceamico.guru/categoria/${category.slug}/`,
+      },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
       {/* Breadcrumb */}
       <div className="px-6 md:px-12 py-4 border-b border-white/10">
         <nav className="breadcrumb">
