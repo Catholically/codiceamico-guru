@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -40,9 +42,11 @@ export default function RootLayout({
   return (
     <html lang="it">
       <body>
+        <GoogleAnalytics />
         <Header />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
@@ -56,7 +60,7 @@ function Header() {
           CODICEAMICO<span className="text-[#FAFF00]">.</span>GURU
         </a>
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-8">
+        <nav className="hidden md:flex gap-8 items-center">
           <a href="/categoria/banche/" className="text-[#999] text-sm font-medium hover:text-white transition-colors">
             Banche
           </a>
@@ -69,16 +73,16 @@ function Header() {
           <a href="/categoria/delivery/" className="text-[#999] text-sm font-medium hover:text-white transition-colors">
             Delivery
           </a>
-          <a href="/confronto/" className="text-[#999] text-sm font-medium hover:text-white transition-colors">
-            Confronto
-          </a>
-          <a href="/guide/" className="text-[#FAFF00] text-sm font-bold hover:text-white transition-colors">
+          <a href="/guide/" className="text-[#999] text-sm font-medium hover:text-white transition-colors">
             Guide
           </a>
+          <a href="/inserisci-codice/" className="bg-[#FAFF00] text-[#111] text-sm font-bold px-4 py-2 hover:bg-white transition-colors">
+            + Inserisci Codice
+          </a>
         </nav>
-        {/* Mobile menu button - links to guide as most important */}
-        <a href="/guide/" className="md:hidden text-[#FAFF00] text-sm font-bold">
-          Guide
+        {/* Mobile menu button */}
+        <a href="/inserisci-codice/" className="md:hidden bg-[#FAFF00] text-[#111] text-xs font-bold px-3 py-1.5">
+          + Codice
         </a>
       </div>
       {/* Mobile nav bar */}
@@ -114,14 +118,17 @@ function Footer() {
           © {new Date().getFullYear()} CodiceAmico.guru — Tutti i diritti riservati
         </p>
         <div className="flex gap-6">
+          <a href="/inserisci-codice/" className="text-[#FAFF00] text-sm font-bold hover:text-white transition-colors">
+            Inserisci Codice
+          </a>
+          <a href="/contatti/" className="text-[#666] text-sm hover:text-white transition-colors">
+            Contatti
+          </a>
           <a href="/glossario/" className="text-[#666] text-sm hover:text-white transition-colors">
             Glossario
           </a>
           <a href="/privacy/" className="text-[#666] text-sm hover:text-white transition-colors">
             Privacy
-          </a>
-          <a href="/termini/" className="text-[#666] text-sm hover:text-white transition-colors">
-            Termini
           </a>
         </div>
       </div>

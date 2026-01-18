@@ -137,6 +137,16 @@
     background-color: var(--color-accent);
     color: var(--color-bg);
   }
+
+  .badge-green {
+    background-color: #22c55e;
+    color: white;
+  }
+
+  .badge-blue {
+    background-color: #3b82f6;
+    color: white;
+  }
 }
 
 /* Custom scrollbar */

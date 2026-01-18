@@ -1,4 +1,5 @@
 import { categories, getFeaturedCodes, getAllActiveCodes } from '@/data/codes';
+import SearchCodes from '@/components/SearchCodes';
 
 export default function HomePage() {
   const featuredCodes = getFeaturedCodes();
@@ -110,14 +111,22 @@ export default function HomePage() {
           Risparmia fino a €200 su banche, energia, telefonia e delivery con codici referral verificati.
         </p>
 
+        <div className="mb-8">
+          <SearchCodes codes={allCodes} />
+        </div>
+
         <a href="#in-evidenza" className="cta-btn">
           ESPLORA I CODICI <span>→</span>
         </a>
 
         <div className="stats-row flex-wrap">
           <div className="flex items-baseline gap-3">
+            <span className="stat-num">{allCodes.filter(c => c.verified).length}+</span>
+            <span className="stat-label">Codici Verificati</span>
+          </div>
+          <div className="flex items-baseline gap-3">
             <span className="stat-num">{allCodes.length}+</span>
-            <span className="stat-label">Codici</span>
+            <span className="stat-label">Aziende</span>
           </div>
           <div className="flex items-baseline gap-3">
             <span className="stat-num">€200</span>
@@ -137,7 +146,10 @@ export default function HomePage() {
           {featuredCodes.map((code) => {
             const cat = categories.find(c => c.id === code.category);
             return (
-              <a key={code.id} href={`/${code.slug}/`} className="card block">
+              <a key={code.id} href={`/${code.slug}/`} className="card block relative">
+                {code.verified && (
+                  <div className="absolute top-4 right-4 badge-green text-[10px]">VERIFICATO</div>
+                )}
                 <div className="card-cat">{cat?.name || code.category}</div>
                 <h3>{code.name}</h3>
                 <div className="flex gap-8 mb-4">
@@ -151,6 +163,11 @@ export default function HomePage() {
                   </div>
                 </div>
                 <p>{code.description.slice(0, 60)}...</p>
+                {code.usageCount && (
+                  <div className="mt-3 pt-3 border-t border-[#e5e5e5] text-xs text-[#999]">
+                    Usato {code.usageCount}+ volte
+                  </div>
+                )}
               </a>
             );
           })}
@@ -200,6 +217,23 @@ export default function HomePage() {
               </div>
             </a>
           ))}
+        </div>
+      </section>
+
+      {/* CTA Inserisci Codice */}
+      <section className="py-16 px-6 md:px-12 border-t border-white/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-r from-[#FAFF00]/20 to-[#FAFF00]/5 border border-[#FAFF00]/30 p-8 md:p-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-4">
+              HAI UN CODICE DA CONDIVIDERE?
+            </h2>
+            <p className="text-[#999] text-lg mb-6 max-w-xl mx-auto">
+              Inserisci il tuo codice amico e raggiungi migliaia di utenti ogni mese. Aumenta le tue possibilita di guadagno!
+            </p>
+            <a href="/inserisci-codice/" className="cta-btn">
+              INSERISCI IL TUO CODICE <span>→</span>
+            </a>
+          </div>
         </div>
       </section>
     </>

@@ -183,9 +183,9 @@ function ContactForm() {
           )}
 
           {/* Note */}
-          <div className="mt-8 p-6 border border-white/10 bg-white/5">
-            <h3 className="font-bold text-white mb-2">Nota importante</h3>
-            <p className="text-[#999] text-sm">
+          <div className="mt-8 p-6 border border-[#e5e5e5] bg-white">
+            <h3 className="font-bold text-[#111] mb-2">Nota importante</h3>
+            <p className="text-[#666] text-sm">
               I codici amico pubblicati su questo sito sono codici personali che condivido per permettere a tutti di ottenere bonus.
               Non sono affiliato ufficialmente con i servizi elencati. Per problemi tecnici con un servizio specifico,
               contatta direttamente il loro supporto clienti.

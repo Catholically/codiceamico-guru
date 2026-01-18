@@ -1,6 +1,7 @@
 import { referralCodes, getCodeBySlug, categories, type ReferralCode } from '@/data/codes';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import CopyCodeBox from '@/components/CopyCodeBox';
 
 interface Props {
   params: { codeSlug: string };
@@ -34,6 +35,13 @@ export function generateStaticParams() {
   }));
 }
 
+// Helper per ottenere mese in italiano
+function getItalianMonth(date: Date): string {
+  const months = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+                  'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+  return months[date.getMonth()];
+}
+
 export function generateMetadata({ params }: Props): Metadata {
   const code = getCodeBySlug(params.codeSlug);
 
@@ -42,8 +50,10 @@ export function generateMetadata({ params }: Props): Metadata {
   }
 
   const promoName = getPromoName(code);
-  const currentYear = new Date().getFullYear();
-  const title = `${promoName} ${currentYear} | Bonus ${code.bonusInvited} per Te`;
+  const now = new Date();
+  const currentMonth = getItalianMonth(now);
+  const currentYear = now.getFullYear();
+  const title = `${promoName} | ${currentMonth} ${currentYear} | Bonus ${code.bonusInvited}`;
   const description = `${promoName}: ottieni ${code.bonusInvited} di bonus! ${code.description.slice(0, 100)}... Codice: ${code.code}`;
 
   return {
@@ -212,7 +222,8 @@ export default function CodePage({ params }: Props) {
 
       {/* Header */}
       <section className="px-6 md:px-12 py-12 max-w-5xl">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-4 flex-wrap">
+          {code.verified && <div className="badge-green">VERIFICATO</div>}
           {code.featured && <div className="badge-yellow">IN EVIDENZA</div>}
           {category && <div className="text-xs font-bold tracking-wider text-[#666] uppercase">{category.icon} {category.name}</div>}
           {code.expiresAt && (
@@ -225,9 +236,24 @@ export default function CodePage({ params }: Props) {
           {promoName.toUpperCase()}<br />
           <span className="text-[#FAFF00]">{currentYear}</span>
         </h1>
-        <p className="text-xl text-[#999] max-w-2xl">
+        <p className="text-xl text-[#999] max-w-2xl mb-4">
           {code.description}
         </p>
+        {/* Stats row */}
+        <div className="flex items-center gap-6 text-sm text-[#666]">
+          {code.usageCount && (
+            <div className="flex items-center gap-2">
+              <span className="text-[#FAFF00]">●</span>
+              <span>Usato <strong className="text-white">{code.usageCount}+</strong> volte</span>
+            </div>
+          )}
+          {code.lastUpdated && (
+            <div className="flex items-center gap-2">
+              <span>Aggiornato:</span>
+              <span className="text-white">{new Date(code.lastUpdated).toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Main Content */}
@@ -263,10 +289,7 @@ export default function CodePage({ params }: Props) {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <div className="code-box">
-                    {code.code}
-                    <div className="text-xs text-[#FAFF00]/80 mt-2 font-normal">Clicca per copiare</div>
-                  </div>
+                  <CopyCodeBox code={code.code} />
                   {code.link && (
                     <a
                       href={code.link}
@@ -356,6 +379,12 @@ export default function CodePage({ params }: Props) {
                     <dt className="text-[#666]">Stato</dt>
                     <dd className="badge-yellow text-xs">ATTIVO</dd>
                   </div>
+                  {code.verified && (
+                    <div className="flex justify-between">
+                      <dt className="text-[#666]">Verifica</dt>
+                      <dd className="badge-green text-xs">VERIFICATO</dd>
+                    </div>
+                  )}
                 </dl>
                 {code.link && code.code !== 'DA_INSERIRE' && (
                   <a
@@ -368,6 +397,42 @@ export default function CodePage({ params }: Props) {
                   </a>
                 )}
               </div>
+
+              {/* Quanto si guadagna */}
+              <div className="bg-gradient-to-br from-[#111] to-[#222] p-6 border border-[#333]">
+                <h3 className="font-black text-white mb-3">QUANTO SI GUADAGNA?</h3>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#FAFF00] text-lg">→</span>
+                    <div>
+                      <span className="text-[#999]">Tu ricevi:</span>
+                      <span className="block text-white font-bold text-lg">{code.bonusInvited}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#FAFF00] text-lg">←</span>
+                    <div>
+                      <span className="text-[#999]">Chi ti invita riceve:</span>
+                      <span className="block text-white font-bold text-lg">{code.bonusInviter}</span>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-[#666] text-xs mt-4">
+                  Entrambi guadagnate! I codici amico premiano sia chi invita che chi viene invitato.
+                </p>
+              </div>
+
+              {/* CTA Inserisci codice */}
+              <div className="bg-[#FAFF00]/10 border border-[#FAFF00]/30 p-4">
+                <p className="text-sm text-[#999] mb-2">Hai un codice {code.name}?</p>
+                <a
+                  href="/inserisci-codice/"
+                  className="text-[#FAFF00] font-bold text-sm hover:underline"
+                >
+                  Condividilo su CodiceAmico.guru →
+                </a>
+              </div>
+
               <a
                 href={category ? `/categoria/${category.slug}/` : '/'}
                 className="block text-center text-[#111] hover:underline font-bold text-sm"

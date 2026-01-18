@@ -41,6 +41,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
+    // Privacy page
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: today,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    // Inserisci codice page
+    {
+      url: `${baseUrl}/inserisci-codice`,
+      lastModified: today,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    // Blog
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: today,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/dove-pubblicare-codice-amico`,
+      lastModified: today,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
   ];
 
   // SEO landing pages
