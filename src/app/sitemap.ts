@@ -34,6 +34,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.75,
     },
+    // Contatti page
+    {
+      url: `${baseUrl}/contatti`,
+      lastModified: today,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
   ];
 
   // SEO landing pages
