@@ -220,6 +220,48 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Guide e Risorse */}
+      <section className="py-16 px-6 md:px-12 border-t border-white/10" id="guide">
+        <div className="section-title">Guide e Risorse</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          <a
+            href="/blog/dove-pubblicare-codice-amico/"
+            className="group p-6 md:p-8 border border-white/20 hover:border-[#FAFF00] hover:bg-[#FAFF00]/5 transition-all"
+          >
+            <span className="text-[#FAFF00] text-xs font-bold tracking-wider">GUIDA</span>
+            <h3 className="text-xl md:text-2xl font-black mt-2 mb-3 group-hover:text-[#FAFF00] transition-colors">
+              Dove Pubblicare il Tuo Codice Amico
+            </h3>
+            <p className="text-[#999] text-sm mb-4">
+              Scopri i migliori siti e metodi per condividere i tuoi codici referral e massimizzare i guadagni.
+            </p>
+            <span className="text-[#FAFF00] font-bold text-sm group-hover:underline">
+              Leggi la guida →
+            </span>
+          </a>
+          <a
+            href="/inserisci-codice/"
+            className="group p-6 md:p-8 border border-white/20 hover:border-[#FAFF00] hover:bg-[#FAFF00]/5 transition-all"
+          >
+            <span className="text-[#FAFF00] text-xs font-bold tracking-wider">STRUMENTO</span>
+            <h3 className="text-xl md:text-2xl font-black mt-2 mb-3 group-hover:text-[#FAFF00] transition-colors">
+              Inserisci il Tuo Codice Gratis
+            </h3>
+            <p className="text-[#999] text-sm mb-4">
+              Pubblica gratuitamente il tuo codice amico e raggiungi migliaia di utenti ogni mese.
+            </p>
+            <span className="text-[#FAFF00] font-bold text-sm group-hover:underline">
+              Inserisci ora →
+            </span>
+          </a>
+        </div>
+        <div className="mt-6 max-w-4xl">
+          <a href="/blog/" className="text-[#666] hover:text-[#FAFF00] text-sm font-medium transition-colors">
+            Vedi tutte le guide →
+          </a>
+        </div>
+      </section>
+
       {/* CTA Inserisci Codice */}
       <section className="py-16 px-6 md:px-12 border-t border-white/10">
         <div className="max-w-4xl mx-auto text-center">

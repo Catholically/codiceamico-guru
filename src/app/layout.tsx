@@ -117,9 +117,12 @@ function Footer() {
         <p className="text-[#666] text-sm">
           © {new Date().getFullYear()} CodiceAmico.guru — Tutti i diritti riservati
         </p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6">
           <a href="/inserisci-codice/" className="text-[#FAFF00] text-sm font-bold hover:text-white transition-colors">
             Inserisci Codice
+          </a>
+          <a href="/blog/" className="text-[#666] text-sm hover:text-white transition-colors">
+            Blog
           </a>
           <a href="/contatti/" className="text-[#666] text-sm hover:text-white transition-colors">
             Contatti
