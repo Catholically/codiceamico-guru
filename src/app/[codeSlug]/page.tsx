@@ -423,11 +423,11 @@ export default function CodePage({ params }: Props) {
               </div>
 
               {/* CTA Inserisci codice */}
-              <div className="bg-[#FAFF00]/10 border border-[#FAFF00]/30 p-4">
-                <p className="text-sm text-[#999] mb-2">Hai un codice {code.name}?</p>
+              <div className="bg-[#FAFF00] p-4">
+                <p className="text-sm text-[#111]/70 mb-2">Hai un codice {code.name}?</p>
                 <a
                   href="/inserisci-codice/"
-                  className="text-[#FAFF00] font-bold text-sm hover:underline"
+                  className="text-[#111] font-bold text-sm hover:underline"
                 >
                   Condividilo su CodiceAmico.guru →
                 </a>
